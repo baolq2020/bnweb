@@ -16,7 +16,6 @@ import {BASE_URL} from "./app/config/websocket";
 export default function App({store, Layout, persistor, basename}) {
 
     useEffect(() => {
-        console.log(BASE_URL)
         const socket = socketIOClient(BASE_URL, {transports: ['websocket']});
         socket.on("result", message => {
             let data = JSON.parse(message)
