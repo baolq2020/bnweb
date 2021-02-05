@@ -19,7 +19,7 @@ export default function App({store, Layout, persistor, basename}) {
         const socket = socketIOClient(BASE_URL, {transports: ['websocket']});
         socket.on("result", message => {
             let data = JSON.parse(message)
-            let demo = detect.actions.DetectImage('data:image/png;base64,' + data.imagedata)
+            let demo = detect.actions.DetectImage(data.imagedata)
             store.dispatch(demo)
         }, []);
     
