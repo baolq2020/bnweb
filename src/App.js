@@ -11,12 +11,13 @@ import {Routes} from "./app/router/Routes";
 import {I18nProvider, LayoutSplashScreen, ThemeProvider} from "./_metronic";
 import socketIOClient from "socket.io-client";
 import * as detect from "./app/store/ducks/detect.duck";
-
+import {BASE_URL} from "./app/config/websocket";
 
 export default function App({store, Layout, persistor, basename}) {
 
     useEffect(() => {
-        const socket = socketIOClient("ws://localhost:8081", {transports: ['websocket']});
+        console.log(BASE_URL)
+        const socket = socketIOClient(BASE_URL, {transports: ['websocket']});
         socket.on("result", message => {
             let data = JSON.parse(message)
             let demo = detect.actions.DetectImage('data:image/png;base64,' + data.imagedata)
