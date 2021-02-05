@@ -26,11 +26,7 @@ function DetectImage(props) {
     if (event.target.files[0] !== undefined){
       const formData = new FormData();
       formData.append('file', event.target.files[0]);
-
-      const detectImage = sendImage(formData)
-      detectImage.then((data) => {
-        props.DetectImage("https://iupac.org/wp-content/uploads/2018/05/default-avatar.png")
-      });
+      sendImage(formData)
     }
     
 	};

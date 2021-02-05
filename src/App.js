@@ -10,6 +10,7 @@ import {LastLocationProvider} from "react-router-last-location";
 import {Routes} from "./app/router/Routes";
 import {I18nProvider, LayoutSplashScreen, ThemeProvider} from "./_metronic";
 import socketIOClient from "socket.io-client";
+import * as detect from "./app/store/ducks/detect.duck";
 
 
 export default function App({store, Layout, persistor, basename}) {
@@ -18,7 +19,8 @@ export default function App({store, Layout, persistor, basename}) {
         const socket = socketIOClient("ws://localhost:8081", {transports: ['websocket']});
         socket.on("result", message => {
             let data = JSON.parse(message)
-            console.log(data)
+            let demo = detect.actions.DetectImage('data:image/png;base64,' + data.imagedata)
+            store.dispatch(demo)
         }, []);
     
     });

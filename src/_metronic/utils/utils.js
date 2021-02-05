@@ -29,7 +29,7 @@ export function setupAxios(axios, store) {
         return response;
     }, function (error) {
 
-        if (error.response !== undefined) {
+        if (error.response !== undefined && '/auth/login' !== window.location.pathname) {
             if (401 === error.response.status || 403 === error.response.status) {
                 window.location = 'logout';
             }
