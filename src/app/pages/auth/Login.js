@@ -9,6 +9,7 @@ import * as auth from "../../store/ducks/auth.duck";
 import {login} from "../../crud/auth.crud";
 
 function Login(props) {
+
     const {intl} = props;
     const [loading, setLoading] = useState(false);
     const [loadingButtonStyle, setLoadingButtonStyle] = useState({

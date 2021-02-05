@@ -2,15 +2,27 @@
  * Entry application component used to compose providers and render Routes.
  * */
 
-import React from "react";
+import React, { useEffect } from "react";
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import {PersistGate} from "redux-persist/integration/react";
 import {LastLocationProvider} from "react-router-last-location";
 import {Routes} from "./app/router/Routes";
 import {I18nProvider, LayoutSplashScreen, ThemeProvider} from "./_metronic";
+import socketIOClient from "socket.io-client";
+
 
 export default function App({store, Layout, persistor, basename}) {
+
+    useEffect(() => {
+        const socket = socketIOClient("ws://localhost:8081", {transports: ['websocket']});
+        socket.on("result", message => {
+            let data = JSON.parse(message)
+            console.log(data)
+        }, []);
+    
+    });
+
     return (
         /* Provide Redux store */
         <Provider store={store} loading={<LayoutSplashScreen/>}>

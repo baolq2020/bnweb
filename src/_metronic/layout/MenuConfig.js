@@ -511,6 +511,12 @@ export default {
         bullet: "dot"
       },
       {
+        title: "Detect Image",
+        root: true,
+        page: "detect-image",
+        bullet: "dot"
+      },
+      {
         title: "Layout Builder",
         root: true,
         icon: "flaticon2-expand",

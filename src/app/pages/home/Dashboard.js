@@ -17,7 +17,6 @@ import LatestUpdates from "../../widgets/LatestUpdates";
 import BestSellers from "../../widgets/BestSellers";
 import RecentActivities from "../../widgets/RecentActivities";
 import PortletHeaderDropdown from "../../partials/content/CustomDropdowns/PortletHeaderDropdown";
-import {listBook} from "../../crud/book.crud";
 
 export default function Dashboard() {
   const { brandColor, dangerColor, successColor, primaryColor } = useSelector(
@@ -69,12 +68,6 @@ export default function Dashboard() {
     }),
     [brandColor, dangerColor, primaryColor, successColor]
   );
-
-  const books = listBook()
-    books.then((data) => {
-        console.log(data)
-    });
-
 
   return (
     <>
